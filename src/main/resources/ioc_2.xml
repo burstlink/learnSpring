@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="car01" class="com.leeyy.bean.Car">
+        <property name="carNamn" value="BMW"/>
+        <property name="color" value="green"/>
+        <property name="price" value="100"/>
+    </bean>
+    <bean id="book01" class="com.leeyy.bean.Book">
+        <property name="author" value="leeyy"/>
+        <property name="bookName" value="west trip"/>
+    </bean>
+    <bean id="person01" class="com.leeyy.bean.Person">
+        <property name="lastName">
+            <null></null>
+        </property>
+        <property name="car"  ref="car01"/>
+        <property name="books">
+            <list>
+                <ref bean="book01"/>
+                <bean id="book0001" class="com.leeyy.bean.Book" p:bookName="est trip"/>
+            </list>
+        </property>
+        <property name="maps">
+            <map>
+                <entry key="key01" value="zhangsan"/>
+                <entry key="key02" value="18"/>
+                <entry key="key03" value-ref="book01"/>
+                <entry key="key04">
+                    <bean class="com.leeyy.bean.Car">
+                        <property name="carNamn" value="BWm001"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="passwd">1234</prop>
+            </props>
+        </property>
+    </bean>
+<!--    util命名空间创建集合类型的bean，方便别人使用-->
+    <util:map id="myMap">
+        <entry key="key01" value="lll"/>
+    </util:map>
+    <bean id="person02" class="com.leeyy.bean.Person">
+        <property name="maps" ref="myMap"/>
+    </bean>
+<!--  级联赋值  -->
+    <bean id="person03" class="com.leeyy.bean.Person">
+        <property name="car" ref="car01"/>
+        <property name="car.price" value="40"/>
+    </bean>
+<!--继承信息 abstr-->
+    <bean id="person04" class="com.leeyy.bean.Person" parent="person01">
+        <property name="lastName" value="lisisisis"/>
+    </bean>
+</beans>
