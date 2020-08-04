@@ -27,4 +27,11 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public void myInit(){
+        System.out.println("the class of book init method..");
+    }
+    public void myDestroy(){
+        System.out.println("the class of book destroy method..");
+    }
 }

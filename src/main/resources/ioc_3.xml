@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="airplane01" class="com.leeyy.bean.AirPlane">
+      <property name="jzName" value="zhangsan"/>
+    </bean>
+    <!-- 工厂模式 ：工厂帮助创建对象
+        静态工厂：不需要实例化工厂类，直接调用工厂类方法
+        实例工厂：工厂本身需要实例化
+      -->
+<!--静态
+    factory-method指定工厂方法
+-->
+    <bean id="airplane02" class="com.leeyy.bean.factory.AirPlaneStaticFactory" factory-method="getAirPlane">
+        <constructor-arg name="jzName" value="zhangsandege"/>
+    </bean>
+<!--实例
+    先创建工厂对象，配置工厂类
+    factory-bean 指定工厂类
+    factory-method 指定工厂方法
+-->
+    <bean id="airPlaneInstanceFactory" class="com.leeyy.bean.factory.AirPlaneInstanceFactory"/>
+    <bean id="airplane03" class="com.leeyy.bean.AirPlane" factory-bean="airPlaneInstanceFactory" factory-method="getAirPlane">
+        <constructor-arg name="jzName" value="zhangsandege2"/>
+    </bean>
+<!--    FactoryBean 是Spring的一个接口，只要是这个类的一个实现类，spring都认为他是一个工厂
+        无论是否是单实例, ioc 启动时候不会创建，调用时候创建
+-->
+    <bean id="myFactoryBeanImp" class="com.leeyy.bean.factory.MyFactoryBeanImple"/>
+</beans>

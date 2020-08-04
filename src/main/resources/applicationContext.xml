@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--   创建带有生命周期方法的bean
+       生命周期：bean的创建到销魂
+       ioc容器中的bean：
+            1、单例bean，创建启动时候创建，容器关闭时候销毁
+                容器启动-初始化方法-容器关闭-销毁方法
+            2、多实例bean，获取时候才会创建
+                获取bean-初始化方法-容器关闭-不调用bean销毁方法
+       为bean添加生命周期的方法，在创建或者销魂时候调用
+       方法无参
+
+ -->
+    <bean id="book01" class="com.leeyy.bean.Book" destroy-method="myDestroy" init-method="myInit">
+        <property name="bookName" value="yellow Book"/>
+    </bean>
+<!--    bean的后世处理器
+        Spring有一个接口，后置处理器，可以在bean的初始化前后调用方法
+        容器启动(构造器)-后置处理器before-初始化方法-后置处理器after
+        无论是否有初始化方法都会调用后置处理器
+-->
+     <bean id="beanPostProcessor" class="com.leeyy.bean.MyBeanPostProcessor"/>
+</beans>
