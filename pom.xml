@@ -48,6 +48,10 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.5</version>
         </dependency>
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.19</version>
+        </dependency>
     </dependencies>
 </project>
