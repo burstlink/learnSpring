@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--
+    spring的注解：
+    @Controller：控制器的注解
+    @Service：业务逻辑层
+    @Repository：持久化层dao
+    @Component：不属于以上的加这个注解
+
+    base-package:指定扫描基础包，把基础包下面的包里加了注解的类自动扫描到ioc容器中
+    1、组件的id默认是组件的类名首字母小写，也可以在注解中加入自定义名字
+    2、默认自建的作用域是单例模式
+     可以自己修改@Scope(value = "prototype")
+
+-->
+    <context:component-scan base-package="com.leeyy.bean2" use-default-filters="true">
+<!--    可以指定扫描规则
+        排除一些：exclude-filter
+                type annotation 按照注解排除 expression 注解的类全称
+                type assignable 按照类排除 expression 类的全称
+                type aspectj 后面的aspectj表达式
+                type custom 自定义
+                type regex 正则匹配
+
+        只扫描：
+-->
+<!--        <context:exclude-filter type="" expression=""/>-->
+<!--   指定扫描规则，use-default-filters要改成false，禁用默认规则
+
+     -->
+<!--        <context:include-filter type="" expression=""/>-->
+    </context:component-scan>
+<!--Autowired注解自动装配-->
+
+</beans>
