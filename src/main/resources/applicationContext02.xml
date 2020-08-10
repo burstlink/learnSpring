@@ -37,6 +37,23 @@
      -->
 <!--        <context:include-filter type="" expression=""/>-->
     </context:component-scan>
-<!--Autowired注解自动装配-->
+<!--Autowired注解自动装配
+    @Autowired
+    private Bookservice bookservice;
+    1.先按照类型去容器中找到相应的组件
+        若找到则赋值
+        没找到，抛异常
+        找到多个
+            按照变量名作为id继续匹配
+                匹配上，赋值
+                匹配不上，异常
+                    原因是我们按照id查找的
+                    使用@Qualifier("bookServiceExt")指定一个新的id
+                        找到，赋值
+                        找不到，报错
+
+     autowired标注的自动装配的默认是一定装配上的，找到就装配，找不到拉到
+
+-->
 
 </beans>

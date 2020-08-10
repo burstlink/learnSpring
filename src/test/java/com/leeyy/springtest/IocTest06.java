@@ -18,9 +18,9 @@ public class IocTest06 {
     }
     @Test
     public void test01() {
-        Object bean1 = ioc.getBean("boookService");
-        Object bean2 = ioc.getBean("boookService");
-        System.out.println(bean1==bean2);
+//        Object bean1 = ioc.getBean("boookService");
+//        Object bean2 = ioc.getBean("boookService");
+//        System.out.println(bean1==bean2);
     }
 
 }
