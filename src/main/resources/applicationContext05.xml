@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--
+    aop
+    目标类和切面类加入到ioc容器中,告诉spring那个是切面类@Aspect，告诉spring切面类中每一个方法合适运行
+    aop使用步骤：
+    1、导包
+    2、切面类@Aspect
+    3、何时何地运行切面类
+    4、开启基于注解的aop
+-->
+    <context:component-scan base-package="com.leeyy.bean3"/>
+<!--
+    开启基于apo的命名空间
+    -->
+    <aop:aspectj-autoproxy/>
+</beans>
